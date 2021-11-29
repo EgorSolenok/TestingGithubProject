@@ -4,12 +4,14 @@ import pytest
 import os
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
 
 
 
 def pytest_addoption(parser):
     '''
-    Possibility of parameterization of the environment using different interface languages. To change the language, you must explicitly specify on the command line:
+    Possibility of parameterization of the environment using different interface languages.
+    To change the language, you must explicitly specify on the command line:
      <- language = en> or another language in standard abbreviation.
     '''
     parser.addoption('--language',
@@ -31,8 +33,7 @@ def browser(request):
         'prefs',{'intl.accept_languages': user_language})
     print("\nStart browser for test...")
 
-    browser = webdriver.Chrome(options=options)
-
+    browser = webdriver.Chrome(ChromeDriverManager(log_level=0).install(), options=options)
     yield browser
     print("\nQuit browser..")
     browser.quit()
