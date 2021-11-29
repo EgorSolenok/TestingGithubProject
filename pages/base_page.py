@@ -1,12 +1,5 @@
 import allure
-from allure_commons.types import AttachmentType
-from selenium.common.exceptions import NoAlertPresentException
-from selenium.common.exceptions import NoSuchElementException
-from selenium.common.exceptions import TimeoutException
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import WebDriverWait
-from .credentials import Credentials
-from .locators import BasePageLocators
+
 
 class BasePage:
     """
@@ -23,6 +16,7 @@ class BasePage:
         self.url = url
         self.browser.implicitly_wait(timeout)
 
+    @allure.step("Opening the page with link in argument of instance")
     def open(self):
         """
         Method opens the transferred link in initialization method.

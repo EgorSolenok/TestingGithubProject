@@ -1,5 +1,6 @@
 
 
+import allure
 import pytest
 import os
 from selenium import webdriver
@@ -21,19 +22,26 @@ def pytest_addoption(parser):
                     )
 
 
+@allure.step('Running browser in conftest.py')
+def conftest_browser_step():
+    """
+    Method shows running the browser in report
+    """
+    pass
+
 @pytest.fixture(scope="function")
 def browser(request):
     '''
-    Method initializes driver for Chrome browser.
+    Method automatically initializes driver for Chrome browser.
     '''
     user_language = request.config.getoption("language")
     options = Options()
     options.add_argument("start-maximized")
     options.add_experimental_option(
         'prefs',{'intl.accept_languages': user_language})
-    print("\nStart browser for test...")
 
     browser = webdriver.Chrome(ChromeDriverManager(log_level=0).install(), options=options)
+    # conftest_browser_step()
     yield browser
-    print("\nQuit browser..")
     browser.quit()
+

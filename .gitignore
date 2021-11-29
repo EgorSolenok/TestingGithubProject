@@ -3,6 +3,10 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Data from Allure
+.report_data
+report_data/
+
 # C extensions
 *.so
 
