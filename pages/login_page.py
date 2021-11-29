@@ -1,9 +1,10 @@
 from .base_page import BasePage
 from .locators import LoginPageLocators
 from .credentials import Credentials
+from utilities.browser_helper import BrowserHelper
 
 
-class LoginPage(BasePage):
+class LoginPage(BrowserHelper, BasePage):
     def should_be_login_page(self):
         """
         Complex verification for compliance with the login page. Method is using current URL, verification of
