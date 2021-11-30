@@ -1,3 +1,6 @@
+import allure
+from datetime import datetime
+from allure_commons.types import AttachmentType
 from pages.base_page import BasePage
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import TimeoutException
@@ -5,12 +8,12 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
 class BrowserHelper(BasePage):
+    @allure.step(f"Verification of the presence of the element {how} {what}")
     def is_element_present(self, how, what):
         """
-         The method that catches the exception.
-        :param how: how to search (css, id, xpath, etc.)
-        :param what: Selector string
-        :return: True - if element is on the page, False - if not.
+        The method that catches the exceptions. How: how to search (css, id, xpath, etc.)
+        What: Selector string
+        True - if element is on the page, False - if not.
         """
         try:
             self.browser.find_element(how, what)

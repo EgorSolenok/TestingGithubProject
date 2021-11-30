@@ -1,4 +1,4 @@
-
+import logging
 
 import allure
 import pytest
@@ -6,7 +6,6 @@ import os
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
-
 
 
 def pytest_addoption(parser):
@@ -40,8 +39,8 @@ def browser(request):
     options.add_experimental_option(
         'prefs',{'intl.accept_languages': user_language})
 
-    browser = webdriver.Chrome(ChromeDriverManager(log_level=0).install(), options=options)
-    # conftest_browser_step()
+    browser = webdriver.Chrome(ChromeDriverManager(log_level=logging.ERROR).install(), options=options)
+    conftest_browser_step()
     yield browser
     browser.quit()
 

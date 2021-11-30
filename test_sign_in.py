@@ -7,16 +7,15 @@ from pages.user_main_page import UserMainPage
 
 
 @allure.feature('Guest login actions on the main page')
+@allure.severity(allure.severity_level.CRITICAL)
 class TestSignInFromMainPage:
     @allure.story('Guest sees link to sign in')
-    @allure.severity(allure.severity_level.CRITICAL)
     def test_guest_should_see_login_link(self, browser):
         guest_main_page = GuestMainPage(browser, Links.MAIN_PAGE_LINK)
         guest_main_page.open()
         guest_main_page.should_be_login_link()
 
     @allure.story('Guest can click on the link to sign in')
-    @allure.severity(allure.severity_level.CRITICAL)
     def test_guest_can_go_to_login_page(self, browser):
         guest_main_page = GuestMainPage(browser, Links.MAIN_PAGE_LINK)
         guest_main_page.open()
@@ -25,7 +24,6 @@ class TestSignInFromMainPage:
         guest_login_page.should_be_login_page()
 
     @allure.story('Guest can click on the link and sign in. Test should verified it by user icon and actual name')
-    @allure.severity(allure.severity_level.CRITICAL)
     def test_guest_can_sign_in_test_user(self, browser):
         guest_main_page = GuestMainPage(browser, Links.MAIN_PAGE_LINK)
         guest_main_page.open()
