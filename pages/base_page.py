@@ -5,12 +5,12 @@ class BasePage:
     """
     Class for base page of website with URL. URL is defined in class Links module Links.
     """
-    def __init__(self, browser, url, timeout=3):
+    def __init__(self, browser, url, timeout=5):
         """
         :param browser: driver instance
         :param url: correct URL for tests
         :param timeout: Time (seconds) for implicitly waiting of any
-        find_element methods. Default value - 3 seconds.
+        find_element methods. Default value - 5 seconds.
         """
         logger.info(f"Initializing the page instance of {url}")
         self.browser = browser
