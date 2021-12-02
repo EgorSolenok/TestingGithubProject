@@ -1,12 +1,14 @@
 import logging
 
 import allure
+from utils.links import Links
 import pytest
 import os
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
-
+from pages.guest_main_page import GuestMainPage
+from pages.login_page import LoginPage
 
 def pytest_addoption(parser):
     '''
@@ -21,7 +23,7 @@ def pytest_addoption(parser):
                     )
 
 
-@allure.step('Running browser in conftest.py')
+@allure.step('Running browser from fixture in conftest.py')
 def conftest_browser_step():
     """
     Method shows running the browser in report
@@ -43,4 +45,5 @@ def browser(request):
     conftest_browser_step()
     yield browser
     browser.quit()
+
 

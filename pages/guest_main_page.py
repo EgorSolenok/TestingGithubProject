@@ -1,15 +1,12 @@
 import allure
-from datetime import datetime
-from allure_commons.types import AttachmentType
-from utils.logger import logger
-from .base_page import BasePage
+
 from utils.browser_helper import BrowserHelper
 from utils.locators import BasePageLocators
+from utils.logger import logger
+from .base_page import BasePage
+
 
 class GuestMainPage(BrowserHelper, BasePage):
-    def __init__(self, *args, **kwargs):
-        super(GuestMainPage, self).__init__(*args, **kwargs)
-
     @allure.step("Click on the link to login page")
     def go_to_login_page(self):
         """
@@ -21,7 +18,6 @@ class GuestMainPage(BrowserHelper, BasePage):
         # with allure.step("Do a screenshot with click on login link page"):
         #     allure.attach(self.browser.get_screenshot_as_png(), name=f'Screenshot {datetime.now()}',
         #                   attachment_type=AttachmentType.PNG)
-
 
     @allure.step("Verification of link to login page")
     def should_be_login_link(self):

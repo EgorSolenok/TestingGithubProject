@@ -1,19 +1,16 @@
-import allure
 from datetime import datetime
+
+import allure
 from allure_commons.types import AttachmentType
-from .base_page import BasePage
-from utils.credentials import Credentials
-from utils.locators import BasePageLocators
-from utils.locators import HeaderUserPageLocators
+
 from utils.browser_helper import BrowserHelper
+from utils.credentials import Credentials
+from utils.locators import HeaderUserPageLocators
 from utils.logger import logger
-from faker import Faker
+from .base_page import BasePage
 
 
 class HeaderUserPage(BrowserHelper, BasePage):
-    def __init__(self, *args, **kwargs):
-        super(HeaderUserPage, self).__init__(*args, **kwargs)
-
     @allure.step("Click on the dropdown profile list")
     def go_to_dropdown_profile_list(self):
         """

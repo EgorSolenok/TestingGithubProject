@@ -8,7 +8,6 @@ from utils.browser_helper import BrowserHelper
 from utils.logger import logger
 
 
-
 class LoginPage(BrowserHelper, BasePage):
     @allure.step("Verification of login page (correct URL, username and password forms")
     def should_be_login_page(self):
@@ -39,8 +38,7 @@ class LoginPage(BrowserHelper, BasePage):
     @allure.step(f"Sign in with given credentials {Credentials.USERNAME} {Credentials.PASSWORD}")
     def sign_in_test_user(self):
         """
-        Method initializes login with data passed in the class Credentials.
-        It displays the input data before logging in.
+        Method initializes login with random data.
         """
         logger.info(f"Sign in with given credentials {Credentials.USERNAME} {Credentials.PASSWORD}")
         self.browser.find_element(*LoginPageLocators.USERNAME_FORM).send_keys(Credentials.USERNAME)
