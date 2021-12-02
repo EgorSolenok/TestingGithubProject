@@ -24,7 +24,7 @@ class MainRepositoryPage(HeaderUserPage, BrowserHelper, BasePage):
         logger.info("Go to adding README")
         self.browser.find_element(*MainRepositoryPageLocators.ADDING_README_BUTTON).click()
 
-    @allure.step(f"Verification of actual repo name by data comparison")
+    @allure.step("Verification of actual repo name by data comparison")
     def should_be_correct_repository_name(self):
         """
         Method verifies the actual name of repository with random name.
@@ -33,3 +33,12 @@ class MainRepositoryPage(HeaderUserPage, BrowserHelper, BasePage):
         logger.info(f"Verification of actual repo name by data comparison with {self.LAST_GENERATED_NAME}")
         assert str(actual_repository_name) in f"{self.LAST_GENERATED_NAME}",\
             "Name of actual repo isn't correct"
+
+    @allure.step("Verification of created README file")
+    def should_be_created_readme_file(self):
+        """
+        Method verifies created README file.
+        """
+        logger.info("Verification of created README file")
+        assert self.is_element_present(*MainRepositoryPageLocators.LAST_COMMIT_TIMESTAMP), \
+            "Probably commit with README hasn't created"

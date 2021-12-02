@@ -25,3 +25,9 @@ class UserMainPage(HeaderUserPage, BrowserHelper, BasePage):
         """
         logger.info("Go to last created repository")
         self.click_at_element_when_it_become_visible(*UserMainPageLocators.LAST_CREATED_REPOSITORY)
+
+    @allure.step("Verify presence of repository for deleting")
+    def should_be_repository_for_deleting(self):
+        logger.info("Verify presence of repository for deleting")
+        assert self.is_element_present(*UserMainPageLocators.LAST_CREATED_REPOSITORY),\
+            "Probably there is no created repositories"

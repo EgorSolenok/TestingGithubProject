@@ -5,7 +5,7 @@ class BasePageLocators:
     LOGIN_LINK = (By.XPATH, "//a[contains(@href, '/login')]")
 
 class CreatingFilePageLocators:
-    FILE_TEXT_FORM = (By.XPATH, "//*[@id='code-editor']/div/pre/span")
+    FILE_TEXT_FORM = (By.XPATH, "//div[@id='code-editor']/div/pre")
     COMMIT_NEW_FILE_BUTTON = (By.XPATH, "//button[@id='submit-file']")
 
 class LoginPageLocators:
@@ -35,6 +35,7 @@ class MainRepositoryPageLocators:
     SETTINGS_REPOSITORY_BUTTON = (By.XPATH, "//a[@id='settings-tab']")
     ACTUAL_REPOSITORY_NAME = (By.XPATH, "//strong[@itemprop='name']/a[@href]")
     ADDING_README_BUTTON = (By.XPATH, "//a[contains(text(),'README')]")
+    LAST_COMMIT_TIMESTAMP = (By.XPATH, "//*[@id='repo-content-pjax-container']//time-ago[@datetime]")
 
 class SettingsRepositoryPageLocators:
     DELETE_REPOSITORY_BUTTON = (By.XPATH, "//summary[contains(text(),'Delete this')]")
