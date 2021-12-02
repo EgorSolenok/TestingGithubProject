@@ -19,11 +19,15 @@ Make sure you have python3 installed on your machine by typing in cmd ``python3 
 
 ``$ git clone https://github.com/EgorSolenok/TestingGithubProject.git``
 
-2) Install dependencies in python3 from requirements.txt:
+2) You have to install allure command line and add the allure folder installation into system environment variable: https://docs.qameta.io/allure/#_installing_a_commandline
+
+3) You have to install package venv for creation virtual environment and activate it: https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/  
+
+4) Install dependencies in python3 from requirements.txt:
 
 ``pip3 install -r requirements.txt``
 
-3) Add your own credentials (**USERNAME** and **PASSWORD**) for logging to github.com in ``utils/credentials.py``:
+5) Add your own credentials (**USERNAME** and **PASSWORD**) for logging to github.com in ``utils/credentials.py``:
 
 **class Credentials**
 * USERNAME = ``'type here'``
