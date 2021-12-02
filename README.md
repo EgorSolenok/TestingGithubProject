@@ -45,11 +45,11 @@ To run the test cases in feature "User additional actions with repository" and c
 ``pytest -v -m "addition_actions" --alluredir=report_data/``
 
 To run required tests from PythonInternship_Task0 use in brackets following marks:
-* Correct user is logged in - "sign_in"
-* Create repository - "create_repository"
-* Rename repository - "rename_repository"
-* Add README - "add_readme"
-* Delete repository - "delete_repository"
+* Correct user is logged in -  ``pytest -v -m "sign_in" --alluredir=report_data/``
+* Create repository -  ``pytest -v -m "create_repository" --alluredir=report_data/``
+* Rename repository -  ``pytest -v -m "rename_repository" --alluredir=report_data/``
+* Add README -  ``pytest -v -m "add_readme" --alluredir=report_data/``
+* Delete repository -  ``pytest -v -m "delete_repository" --alluredir=report_data/``
 
 To create **Allure report** and open it type in cmd being located in the folder path:
 
