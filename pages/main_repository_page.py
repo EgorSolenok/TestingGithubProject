@@ -13,22 +13,25 @@ class MainRepositoryPage(HeaderUserPage, BrowserHelper, BasePage):
         """
         Method goes to repository settings page.
         """
-        self.browser.find_element(*MainRepositoryPageLocators.SETTINGS_REPOSITORY_BUTTON).click()
+        settings_button = self.browser.find_element(*MainRepositoryPageLocators.SETTINGS_REPOSITORY_BUTTON)
+        settings_button.click()
 
     @allure.step("Go to adding README")
     def go_to_adding_readme_page(self):
         """
         Method goes to adding README.
         """
-        self.browser.find_element(*MainRepositoryPageLocators.ADDING_README_BUTTON).click()
+        adding_button = self.browser.find_element(*MainRepositoryPageLocators.ADDING_README_BUTTON)
+        adding_button.click()
 
     @allure.step("Verification of actual repo name by data comparison")
     def should_be_correct_repository_name(self):
         """
         Method verifies the actual name of repository with random name.
         """
-        actual_repository_name = self.browser.find_element(*MainRepositoryPageLocators.ACTUAL_REPOSITORY_NAME).text
-        assert str(actual_repository_name) in f"{GeneratedData.LAST_GENERATED_NAME}",\
+        repository_name = self.browser.find_element(*MainRepositoryPageLocators.ACTUAL_REPOSITORY_NAME)
+        actual_name_text = str(repository_name.text)
+        assert actual_name_text in f"{GeneratedData.LAST_GENERATED_NAME}",\
             "Name of actual repo isn't correct"
 
     @allure.step("Verification of created README file")

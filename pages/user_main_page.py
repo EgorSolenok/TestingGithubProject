@@ -13,15 +13,17 @@ class UserMainPage(HeaderUserPage, BrowserHelper, BasePage):
         """
         Method goes to page for creating new repository.
         """
-        self.browser.find_element(*HeaderUserPageLocators.DROPDOWN_BUTTON_CREATING).click()
-        self.browser.find_element(*HeaderUserPageLocators.CREATING_REPOSITORY_BUTTON).click()
+        dropdown_button = self.browser.find_element(*HeaderUserPageLocators.DROPDOWN_BUTTON_CREATING)
+        dropdown_button.click()
+        creating_button = self.browser.find_element(*HeaderUserPageLocators.CREATING_REPOSITORY_BUTTON)
+        creating_button.click()
 
     @allure.step("Go to last created repository")
     def go_to_last_repository_page(self):
         """
         Method goes to page with last created repository.
         """
-        self.click_at_element_when_it_become_visible(*UserMainPageLocators.LAST_CREATED_REPOSITORY)
+        self.click_at_visible_element(*UserMainPageLocators.LAST_CREATED_REPOSITORY)
 
     @allure.step("Verify presence of repository for deleting")
     def should_be_repository_for_deleting(self):

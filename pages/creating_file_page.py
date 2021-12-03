@@ -13,13 +13,16 @@ class CreatingFilePage(HeaderUserPage, BrowserHelper, BasePage):
         Method sends in text form message.
         """
         information_message = "Initial text for README file"
-        self.browser.find_element(*CreatingFilePageLocators.FILE_TEXT_FORM).click()
-        self.browser.find_element(*CreatingFilePageLocators.FILE_TEXT_FORM).clear()
-        self.browser.find_element(*CreatingFilePageLocators.FILE_TEXT_FORM).send_keys('\n', information_message)
+        file_text_form = self.browser.find_element(*CreatingFilePageLocators.FILE_TEXT_FORM)
+        file_text_form.click()
+        file_text_form.clear()
+        file_text_form.send_keys('\n', information_message)
+
 
     @allure.step("Commit new file")
     def commit_new_file(self):
         """
         Method commits new file.
         """
-        self.browser.find_element(*CreatingFilePageLocators.COMMIT_NEW_FILE_BUTTON).click()
+        commit_new_file_button = self.browser.find_element(*CreatingFilePageLocators.COMMIT_NEW_FILE_BUTTON)
+        commit_new_file_button.click()

@@ -10,19 +10,23 @@ from utils.generated_data import GeneratedData
 class SettingsRepositoryPage(HeaderUserPage, BrowserHelper, BasePage):
     @allure.step("Delete repository")
     def delete_repository(self):
-        self.browser.find_element(*SettingsRepositoryPageLocators.DELETE_REPOSITORY_BUTTON).click()
-        confirmation_text_input = self.wait_for_element_when_it_become_visible(
-            *SettingsRepositoryPageLocators.CONFIRMATION_DELETE_TEXT).text
-        self.browser.find_element(*SettingsRepositoryPageLocators.CONFIRMATION_FORM).\
-            send_keys(confirmation_text_input)
-        self.click_on_element_when_it_become_clickable(*SettingsRepositoryPageLocators.CONFIRMATION_BUTTON)
+        delete_button = self.browser.find_element(*SettingsRepositoryPageLocators.DELETE_REPOSITORY_BUTTON)
+        delete_button.click()
+        confirmation = self.find_visible_element(
+            *SettingsRepositoryPageLocators.CONFIRMATION_DELETE_TEXT)
+        confirmation_text = confirmation.text
+        confirmation_form = self.browser.find_element(*SettingsRepositoryPageLocators.CONFIRMATION_FORM)
+        confirmation_form.send_keys(confirmation_text)
+        self.click_at_clickable_element(*SettingsRepositoryPageLocators.CONFIRMATION_BUTTON)
 
     @allure.step("Delete repository name in form")
     def delete_repository_name_in_form(self):
-        self.browser.find_element(*SettingsRepositoryPageLocators.REPOSITORY_NAME_FORM).clear()
+        repo_name_form = self.browser.find_element(*SettingsRepositoryPageLocators.REPOSITORY_NAME_FORM)
+        repo_name_form.clear()
 
     @allure.step("Change to new repository name in form")
     def change_repository_name_in_form_and_confirm(self):
         input_name = GeneratedData.generate_new_name()
-        self.browser.find_element(*SettingsRepositoryPageLocators.REPOSITORY_NAME_FORM).send_keys(input_name)
-        self.click_on_element_when_it_become_clickable(*SettingsRepositoryPageLocators.RENAME_CONFIRM_BUTTON)
+        repo_name_form = self.browser.find_element(*SettingsRepositoryPageLocators.REPOSITORY_NAME_FORM)
+        repo_name_form.send_keys(input_name)
+        self.click_at_clickable_element(*SettingsRepositoryPageLocators.RENAME_CONFIRM_BUTTON)

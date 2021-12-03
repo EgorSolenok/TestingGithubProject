@@ -37,10 +37,14 @@ class LoginPage(BrowserHelper, BasePage):
         Method initializes login with random data.
         """
         logger.info(f"Sign in with given credentials {Credentials.USERNAME} {Credentials.PASSWORD}")
-        self.browser.find_element(*LoginPageLocators.USERNAME_FORM).send_keys(Credentials.USERNAME)
-        self.browser.find_element(*LoginPageLocators.PASSWORD_FORM).send_keys(Credentials.PASSWORD)
+
+        username_form = self.browser.find_element(*LoginPageLocators.USERNAME_FORM)
+        username_form.send_keys(Credentials.USERNAME)
+        password_form = self.browser.find_element(*LoginPageLocators.PASSWORD_FORM)
+        password_form.send_keys(Credentials.PASSWORD)
         with allure.step("Do a screenshot with credentials"):
             allure.attach(self.browser.get_screenshot_as_png(),
                           name=f'Cred_sign_in {(str(datetime.now())[:19])}',
                           attachment_type=AttachmentType.PNG)
-        self.browser.find_element(*LoginPageLocators.SUBMIT_BUTTON).click()
+        submit_button = self.browser.find_element(*LoginPageLocators.SUBMIT_BUTTON)
+        submit_button.click()
