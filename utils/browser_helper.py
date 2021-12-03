@@ -7,11 +7,9 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
 from utils.logger import logger
-from faker import Faker
 
 
 class BrowserHelper(BasePage):
-    LAST_GENERATED_NAME = ''
 
     @allure.step(f"Verification of the presence of the element {1} and {2}")
     def is_element_present(self, how, what):
@@ -29,14 +27,6 @@ class BrowserHelper(BasePage):
             logger.error(f"Can't find element {how}, '{what}' ")
             return False
         return True
-
-    @allure.step("Generated new fake name")
-    @staticmethod
-    def generate_new_name():
-        new_fake_name = Faker().domain_name()
-        BrowserHelper.LAST_GENERATED_NAME = new_fake_name
-        logger.info(f"Generated new name {new_fake_name}")
-        return new_fake_name
 
     @allure.step(f"Verification that element {1} {2} is disappeared from page during {3} seconds")
     def is_disappeared(self, how, what, timeout=3):

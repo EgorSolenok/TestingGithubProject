@@ -2,9 +2,9 @@ import allure
 
 from utils.browser_helper import BrowserHelper
 from utils.locators import MainRepositoryPageLocators
-from utils.logger import logger
 from .base_page import BasePage
 from .header_user_page import HeaderUserPage
+from utils.generated_data import GeneratedData
 
 
 class MainRepositoryPage(HeaderUserPage, BrowserHelper, BasePage):
@@ -28,7 +28,7 @@ class MainRepositoryPage(HeaderUserPage, BrowserHelper, BasePage):
         Method verifies the actual name of repository with random name.
         """
         actual_repository_name = self.browser.find_element(*MainRepositoryPageLocators.ACTUAL_REPOSITORY_NAME).text
-        assert str(actual_repository_name) in f"{self.LAST_GENERATED_NAME}",\
+        assert str(actual_repository_name) in f"{GeneratedData.LAST_GENERATED_NAME}",\
             "Name of actual repo isn't correct"
 
     @allure.step("Verification of created README file")

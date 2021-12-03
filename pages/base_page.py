@@ -1,5 +1,5 @@
 import allure
-from utils.logger import logger
+
 
 class BasePage:
     """

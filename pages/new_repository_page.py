@@ -5,9 +5,9 @@ from allure_commons.types import AttachmentType
 
 from utils.browser_helper import BrowserHelper
 from utils.locators import NewRepositoryPageLocators
-from utils.logger import logger
 from .base_page import BasePage
 from .header_user_page import HeaderUserPage
+from utils.generated_data import GeneratedData
 
 
 class NewRepositoryPage(HeaderUserPage, BrowserHelper, BasePage):
@@ -16,7 +16,7 @@ class NewRepositoryPage(HeaderUserPage, BrowserHelper, BasePage):
         """
         Method create new repository with random name.
         """
-        repository_name_input = self.generate_new_name()
+        repository_name_input = GeneratedData.generate_new_name()
         self.browser.find_element(*NewRepositoryPageLocators.REPOSITORY_NAME_FORM).send_keys(repository_name_input)
         allure.attach(self.browser.get_screenshot_as_png(),
                       name=f'Repo_name {(str(datetime.now())[:19])}',

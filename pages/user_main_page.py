@@ -3,7 +3,6 @@ import allure
 from utils.browser_helper import BrowserHelper
 from utils.locators import HeaderUserPageLocators
 from utils.locators import UserMainPageLocators
-from utils.logger import logger
 from .base_page import BasePage
 from .header_user_page import HeaderUserPage
 
