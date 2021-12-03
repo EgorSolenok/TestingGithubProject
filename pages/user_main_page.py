@@ -14,7 +14,6 @@ class UserMainPage(HeaderUserPage, BrowserHelper, BasePage):
         """
         Method goes to page for creating new repository.
         """
-        logger.info("Go to creating new repository")
         self.browser.find_element(*HeaderUserPageLocators.DROPDOWN_BUTTON_CREATING).click()
         self.browser.find_element(*HeaderUserPageLocators.CREATING_REPOSITORY_BUTTON).click()
 
@@ -23,11 +22,9 @@ class UserMainPage(HeaderUserPage, BrowserHelper, BasePage):
         """
         Method goes to page with last created repository.
         """
-        logger.info("Go to last created repository")
         self.click_at_element_when_it_become_visible(*UserMainPageLocators.LAST_CREATED_REPOSITORY)
 
     @allure.step("Verify presence of repository for deleting")
     def should_be_repository_for_deleting(self):
-        logger.info("Verify presence of repository for deleting")
         assert self.is_element_present(*UserMainPageLocators.LAST_CREATED_REPOSITORY),\
             "Probably there is no created repositories"

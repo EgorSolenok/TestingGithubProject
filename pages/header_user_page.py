@@ -16,7 +16,6 @@ class HeaderUserPage(BrowserHelper, BasePage):
         """
         Method clicks on dropdown profile list
         """
-        logger.info("Click on the dropdown profile list")
         dropdown_list_link = self.browser.find_element(*HeaderUserPageLocators.DROPDOWN_BUTTON_PROFILE)
         dropdown_list_link.click()
 
@@ -25,7 +24,6 @@ class HeaderUserPage(BrowserHelper, BasePage):
         """
         Method logs out from system
         """
-        logger.info("Log out from system")
         log_out_button = self.browser.find_element(*HeaderUserPageLocators.LOG_OUT_BUTTON)
         log_out_button.click()
 
@@ -44,12 +42,10 @@ class HeaderUserPage(BrowserHelper, BasePage):
         The method checks for the name of actual user with username in credentials.
         """
         self.go_to_dropdown_profile_list()
-        logger.info("Definition of actual user name in dropdown profile list")
         actual_user_name = self.browser.find_element(*HeaderUserPageLocators.USER_NAME_IN_PROFILE_MENU).text
         with allure.step("Do a screenshot with profile list"):
             logger.info("Do a screenshot with profile list")
             allure.attach(self.browser.get_screenshot_as_png(),
                           name=f'Scr_menu {(str(datetime.now())[:19])}',
                           attachment_type=AttachmentType.PNG)
-        logger.info("Verification of actual user name by data comparison from credentials")
         assert str(actual_user_name) in f"{Credentials.USERNAME}", "Name of actual user isn't correct"

@@ -30,10 +30,12 @@ class BrowserHelper(BasePage):
             return False
         return True
 
+    @allure.step("Generated new fake name")
     @staticmethod
     def generate_new_name():
         new_fake_name = Faker().domain_name()
         BrowserHelper.LAST_GENERATED_NAME = new_fake_name
+        logger.info(f"Generated new name {new_fake_name}")
         return new_fake_name
 
     @allure.step(f"Verification that element {1} {2} is disappeared from page during {3} seconds")

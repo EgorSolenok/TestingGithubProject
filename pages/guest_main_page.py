@@ -12,7 +12,6 @@ class GuestMainPage(BrowserHelper, BasePage):
         """
         Method goes to the service login page.
         """
-        logger.info("Click on the link to login page")
         login_link_button = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
         login_link_button.click()
         # with allure.step("Do a screenshot with click on login link page"):
@@ -24,6 +23,5 @@ class GuestMainPage(BrowserHelper, BasePage):
         """
         The method checks for the presence of a link to go to the login page
         """
-        logger.info("Verification of link to login page")
         assert self.is_element_present(*BasePageLocators.LOGIN_LINK), \
             "Login link is not presented"

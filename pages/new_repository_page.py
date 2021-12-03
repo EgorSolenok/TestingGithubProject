@@ -16,10 +16,8 @@ class NewRepositoryPage(HeaderUserPage, BrowserHelper, BasePage):
         """
         Method create new repository with random name.
         """
-        logger.info("Creating new repository with random repository name")
         repository_name_input = self.generate_new_name()
         self.browser.find_element(*NewRepositoryPageLocators.REPOSITORY_NAME_FORM).send_keys(repository_name_input)
-        logger.info("Do a screenshot with repository name")
         allure.attach(self.browser.get_screenshot_as_png(),
                       name=f'Repo_name {(str(datetime.now())[:19])}',
                       attachment_type=AttachmentType.PNG)

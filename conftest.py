@@ -1,6 +1,5 @@
 import logging
 
-import allure
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -20,12 +19,6 @@ def pytest_addoption(parser):
                     )
 
 
-@allure.step('Running browser from fixture in conftest.py')
-def conftest_browser_step():
-    """
-    Method shows running the browser in report
-    """
-    pass
 
 @pytest.fixture(scope="class")
 def browser(request):
@@ -39,7 +32,6 @@ def browser(request):
         'prefs',{'intl.accept_languages': user_language})
 
     browser = webdriver.Chrome(ChromeDriverManager(log_level=logging.ERROR).install(), options=options)
-    conftest_browser_step()
     yield browser
     browser.quit()
 

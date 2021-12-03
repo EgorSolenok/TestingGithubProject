@@ -5,7 +5,6 @@ from utils.locators import CreatingFilePageLocators
 from utils.logger import logger
 from .base_page import BasePage
 from .header_user_page import HeaderUserPage
-from selenium.webdriver.common.keys import Keys
 
 
 class CreatingFilePage(HeaderUserPage, BrowserHelper, BasePage):
@@ -14,7 +13,6 @@ class CreatingFilePage(HeaderUserPage, BrowserHelper, BasePage):
         """
         Method sends in text form message.
         """
-        logger.info("Write text example in form")
         information_message = "Initial text for README file"
         self.browser.find_element(*CreatingFilePageLocators.FILE_TEXT_FORM).click()
         self.browser.find_element(*CreatingFilePageLocators.FILE_TEXT_FORM).clear()
@@ -25,5 +23,4 @@ class CreatingFilePage(HeaderUserPage, BrowserHelper, BasePage):
         """
         Method commits new file.
         """
-        logger.info("Commit new file")
         self.browser.find_element(*CreatingFilePageLocators.COMMIT_NEW_FILE_BUTTON).click()
