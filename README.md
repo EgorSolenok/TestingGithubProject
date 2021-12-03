@@ -35,6 +35,8 @@ Make sure you have python3 installed on your machine by typing in cmd ``python3 
 
 # How to run it
 
+**For all tests runs you should to type commands in folder ``tests``.**
+
 To run the test cases in feature "Guest login actions on the main page" and create report:
 
 ``pytest -v -m "guest_actions" --alluredir=report_data/``

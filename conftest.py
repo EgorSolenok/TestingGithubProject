@@ -1,14 +1,11 @@
 import logging
 
 import allure
-from utils.links import Links
 import pytest
-import os
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
-from pages.guest_main_page import GuestMainPage
-from pages.login_page import LoginPage
+
 
 def pytest_addoption(parser):
     '''
@@ -30,7 +27,7 @@ def conftest_browser_step():
     """
     pass
 
-@pytest.fixture(scope="function")
+@pytest.fixture(scope="class")
 def browser(request):
     '''
     Method automatically initializes driver for Chrome browser.

@@ -1,3 +1,5 @@
+import time
+
 import allure
 import pytest
 
@@ -9,6 +11,7 @@ from pages.new_repository_page import NewRepositoryPage
 from pages.main_repository_page import MainRepositoryPage
 from pages.settings_repository_page import SettingsRepositoryPage
 from pages.creating_file_page import CreatingFilePage
+from pages.header_user_page import HeaderUserPage
 
 
 @pytest.fixture(scope="function", autouse=True)
@@ -18,6 +21,11 @@ def setup(browser):
     guest_main_page.go_to_login_page()
     guest_login_page = LoginPage(browser, browser.current_url)
     guest_login_page.sign_in_test_user()
+    yield
+    current_page = HeaderUserPage(browser, browser.current_url)
+    current_page.go_to_dropdown_profile_list()
+    current_page.log_out_from_page()
+
 
 
 @allure.feature('User main actions with repository')
@@ -33,6 +41,7 @@ class TestRepositoryMainActions:
         new_repository_page.creating_new_repository()
         main_repository_page = MainRepositoryPage(browser, browser.current_url)
         main_repository_page.should_be_correct_repository_name()
+
 
     @allure.story("User deletes last created repository")
     @pytest.mark.main_actions

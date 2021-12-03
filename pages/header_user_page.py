@@ -20,6 +20,15 @@ class HeaderUserPage(BrowserHelper, BasePage):
         dropdown_list_link = self.browser.find_element(*HeaderUserPageLocators.DROPDOWN_BUTTON_PROFILE)
         dropdown_list_link.click()
 
+    @allure.step("Log out from system")
+    def log_out_from_page(self):
+        """
+        Method logs out from system
+        """
+        logger.info("Log out from system")
+        log_out_button = self.browser.find_element(*HeaderUserPageLocators.LOG_OUT_BUTTON)
+        log_out_button.click()
+
     @allure.step("Verification of authorized user icon")
     def should_be_icon_of_authorized_user(self):
         """
