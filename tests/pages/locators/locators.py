@@ -37,7 +37,7 @@ class NewRepositoryPageLocators:
 
 
 class MainRepositoryPageLocators:
-    SETTINGS_REPOSITORY_BUTTON = (By.XPATH, "//a[@id='settings-tab']")
+    SETTINGS_REPOSITORY_BUTTON = (By.XPATH, "//*[@id='settings-tab']")
     ACTUAL_REPOSITORY_NAME = (By.XPATH, "//strong[@itemprop='name']/a[@href]")
     ADDING_README_BUTTON = (By.XPATH, "//a[contains(text(),'README')]")
     LAST_COMMIT_TIMESTAMP = (By.XPATH, "//*[@id='repo-content-pjax-container']//time-ago[@datetime]")

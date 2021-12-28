@@ -1,26 +1,24 @@
-import time
-
 import allure
 import pytest
 
-from pages.guest_main_page import GuestMainPage
-from utils.links import Links
-from pages.login_page import LoginPage
-from pages.user_main_page import UserMainPage
-from pages.new_repository_page import NewRepositoryPage
-from pages.main_repository_page import MainRepositoryPage
-from pages.settings_repository_page import SettingsRepositoryPage
-from pages.creating_file_page import CreatingFilePage
-from pages.header_user_page import HeaderUserPage
+from tests.pages.base_page import GuestMainPage
+from config import DefaultUrl
+from tests.pages.login_page import LoginPage
+from tests.pages.user_main_page import UserMainPage
+from tests.pages.new_repository_page import NewRepositoryPage
+from tests.pages.main_repository_page import MainRepositoryPage
+from tests.pages.settings_repository_page import SettingsRepositoryPage
+from tests.pages.creating_file_page import CreatingFilePage
+from tests.pages.header_user_page import HeaderUserPage
 
 
 @pytest.fixture(scope="function", autouse=True)
-def setup(browser):
-    guest_main_page = GuestMainPage(browser, Links.MAIN_PAGE_LINK)
+def setup(browser, user, password):
+    guest_main_page = GuestMainPage(browser, DefaultUrl.SUBJECT_URL)
     guest_main_page.open()
     guest_main_page.go_to_login_page()
     guest_login_page = LoginPage(browser, browser.current_url)
-    guest_login_page.sign_in_test_user()
+    guest_login_page.sign_in_test_user(user, password)
     yield
     current_page = HeaderUserPage(browser, browser.current_url)
     current_page.go_to_dropdown_profile_list()

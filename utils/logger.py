@@ -1,11 +1,13 @@
-import logging
+from loguru import logger
 
 
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
+class LogConfig:
 
-# logging.basicConfig(filename="../logging_data.log",
-#                     format="%(asctime)s: %(levelname)s: :%(filename)s: %(funcName)s: %(name)s: %(message)s",
-#                     datefmt="%m/%d/%Y %I:%M:%S %p",
-#                     filemode='a')
-
+    @staticmethod
+    def set_logger_config():
+        logger.remove()
+        return logger.add(
+            "logging_data.log",
+            format="{time:YYYY-MM-DD at HH:mm:ss} {name} {level} {message}",
+            level="INFO", rotation="1 MB", compression="zip"
+        )
