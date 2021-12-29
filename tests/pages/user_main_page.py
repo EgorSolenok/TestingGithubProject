@@ -1,5 +1,6 @@
 import allure
 
+from utils.generated_data import GeneratedData
 from utils.browser_helper import BrowserHelper
 from tests.pages.locators.locators import HeaderUserPageLocators
 from tests.pages.locators.locators import UserMainPageLocators
@@ -21,9 +22,6 @@ class UserMainPage(HeaderUserPage, BasePage):
         """
         Method goes to page with last created repository.
         """
+        repo_for_deleting = BrowserHelper.find_visible_element(self.browser, *UserMainPageLocators.LAST_CREATED_REPOSITORY)
+        GeneratedData.LAST_GENERATED_NAME = repo_for_deleting.get_property('pathname')
         BrowserHelper.click_element(self.browser, *UserMainPageLocators.LAST_CREATED_REPOSITORY)
-
-    @allure.step("Verify presence of repository for deleting")
-    def should_be_repository_for_deleting(self):
-        assert BrowserHelper.find_visible_element(self.browser, *UserMainPageLocators.LAST_CREATED_REPOSITORY),\
-            "Probably there is no created repositories"

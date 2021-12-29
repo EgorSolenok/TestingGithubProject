@@ -19,6 +19,7 @@ class LoginPageLocators:
 class UserMainPageLocators:
     LAST_CREATED_REPOSITORY = (By.XPATH,
                                "//aside[@aria-label='Account']//a[@data-hovercard-type='repository']")
+    VISIBLE_REPOS = (By.XPATH, "//ul[@data-filterable-for='dashboard-repos-filter-left']//a[@data-hovercard-type='repository']")
 
 
 class HeaderUserPageLocators:
@@ -31,19 +32,19 @@ class HeaderUserPageLocators:
     LOG_OUT_BUTTON = (By.XPATH, "//button[contains(text(), 'Sign')]")
 
 
-class NewRepositoryPageLocators:
+class NewRepoPageLocators:
     REPOSITORY_NAME_FORM = (By.XPATH, "//input[@name='repository[name]']")
     CREATING_BUTTON = (By.XPATH, "//button[contains(text(),'repository')]")
 
 
-class MainRepositoryPageLocators:
+class MainRepoPageLocators:
     SETTINGS_REPOSITORY_BUTTON = (By.XPATH, "//*[@id='settings-tab']")
     ACTUAL_REPOSITORY_NAME = (By.XPATH, "//strong[@itemprop='name']/a[@href]")
     ADDING_README_BUTTON = (By.XPATH, "//a[contains(text(),'README')]")
     LAST_COMMIT_TIMESTAMP = (By.XPATH, "//*[@id='repo-content-pjax-container']//time-ago[@datetime]")
 
 
-class SettingsRepositoryPageLocators:
+class SettingsRepoPageLocators:
     DELETE_REPOSITORY_BUTTON = (By.XPATH, "//summary[contains(text(),'Delete this')]")
     CONFIRMATION_DELETE_TEXT = (By.XPATH,
                                 "//div[contains(@class,'overflow-auto')]//p[contains(text(),'Please')]/strong")

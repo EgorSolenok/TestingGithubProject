@@ -37,32 +37,33 @@ Make sure you have python3.10 installed on your machine by typing in cmd ``pytho
 
 # How to run it
 
-**For all tests runs you should to type commands in folder ``tests``.**
+**For all tests runs you should to type commands in root folder.**
 
 **If you don't set your own creds in config.py - you should type your actual credentials to commandline as  `` --user=< USERNAME > `` and `` --password=< PASSWORD > ``in every case (without brackets).**
 
+To run all existing tests in framework and create report:
 
-
+``pipenv run python -m pytest -v  --alluredir=report_data/``
 
 To run the test cases in feature "Guest login actions on the main page" and create report:
 
-``pytest -v -m "guest_actions" --alluredir=report_data/``
+``pipenv run python -m pytest -v -m "guest_actions" --alluredir=report_data/``
 
 To run the test cases in feature "User main actions with repository" and create report:
 
-``pytest -v -m "main_actions" --alluredir=report_data/``
+``pipenv run python -m pytest -v -m "main_actions" --alluredir=report_data/``
 
 
 To run the test cases in feature "User additional actions with repository" and create report:
 
-``pytest -v -m "addition_actions" --alluredir=report_data/``
+``pipenv run python -m pytest -v -m "addition_actions" --alluredir=report_data/``
 
 To run required tests from PythonInternship_Task0 use in brackets following marks:
-* Correct user is logged in -  ``pytest -v -m "sign_in" --alluredir=report_data/``
-* Create repository -  ``pytest -v -m "create_repository" --alluredir=report_data/``
-* Rename repository -  ``pytest -v -m "rename_repository" --alluredir=report_data/``
-* Add README -  ``pytest -v -m "add_readme" --alluredir=report_data/``
-* Delete repository -  ``pytest -v -m "delete_repository" --alluredir=report_data/``
+* Correct user is logged in -  ``pipenv run python -m pytest -v -m "sign_in" --alluredir=report_data/``
+* Create repository -  ``pipenv run python -m pytest -v -m "create_repository" --alluredir=report_data/``
+* Rename repository -  ``pipenv run python -m pytest -v -m "rename_repository" --alluredir=report_data/``
+* Add README -  ``pipenv run python -m pytest -v -m "add_readme" --alluredir=report_data/``
+* Delete repository -  ``pipenv run python -m pytest -v -m "delete_repository" --alluredir=report_data/``
 
 
 
@@ -72,5 +73,5 @@ To create **Allure report** and open it type in cmd being located in the folder 
 
 **How to logging**
 
-To read logs you should to read ``logging_data.log`` . 
+To read logs you should to read ``logging_data.log`` in root folder. 
 

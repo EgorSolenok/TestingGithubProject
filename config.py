@@ -1,6 +1,9 @@
 class DefaultUrl:
-    SUBJECT_URL = 'https://github.com/'
-
+    MAIN_URL = 'https://github.com/'
+    LOGIN_URL = 'https://github.com/login'
 class DefaultCreds:
-    USERNAME = "testuserintern"
-    PASSWORD = "db1J7SgYbeNC"
+    USERNAME = ""
+    PASSWORD = ""
+    
+class IdentityUrl:
+    LoginPage = "github.com/login"
