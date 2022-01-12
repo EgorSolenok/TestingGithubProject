@@ -10,26 +10,27 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 
 def pytest_addoption(parser):
-    '''
+    """
     Possibility of parameterization of the environment using different interface languages.
     To change the language, you must explicitly specify on the command line:
      <- language = en> or another language in standard abbreviation.
-    '''
+    """
     parser.addoption('--language',
-                     action='store', 
+                     action='store',
                      default='en',
                      help="Choose language: ru, en, fr, it, es ... (etc.)"
-                    )
+                     )
     parser.addoption('--user',
                      action='store',
                      default='None',
                      help="Set a username"
-                    )
+                     )
     parser.addoption('--password',
                      action='store',
                      default='None',
                      help="Set a password"
-                    )
+                     )
+
 
 @pytest.fixture()
 def user(request):
@@ -39,6 +40,7 @@ def user(request):
     else:
         return user_cmd
 
+
 @pytest.fixture()
 def password(request):
     password_cmd = request.config.getoption("password")
@@ -47,17 +49,18 @@ def password(request):
     else:
         return password_cmd
 
+
 @pytest.fixture(scope="session")
 def browser(request):
-    '''
+    """
     Method automatically initializes driver for Chrome browser.
-    '''
+    """
     user_language = request.config.getoption("language")
     options = Options()
     options.add_argument("start-maximized")
     options.add_experimental_option(
-        'prefs',{'intl.accept_languages': user_language})
-
+        'prefs', {'intl.accept_languages': user_language})
+    
     browser = webdriver.Chrome(ChromeDriverManager(log_level=logging.ERROR).install(), options=options)
     yield browser
     browser.quit()
@@ -83,7 +86,3 @@ def pytest_runtest_makereport(item, call):
             )
         except Exception as e:
             print('Fail to take screen-shot: {}'.format(e))
-
-
-
-
